@@ -1,5 +1,4 @@
 FIND_PACKAGE(OpenGL)
-cmake_policy(SET CMP0028 OLD)
 find_package(ASSIMP QUIET)
 find_package(Qt5Widgets)
 find_package(Qt5Test)
