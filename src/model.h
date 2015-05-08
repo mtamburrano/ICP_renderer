@@ -30,8 +30,8 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include <SDL/SDL.h>
-#include <SDL/SDL_opengl.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_opengl.h>
 
 #include <assimp/cimport.h>
 #include <assimp/scene.h>

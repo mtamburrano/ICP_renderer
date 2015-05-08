@@ -1,6 +1,10 @@
 FIND_PACKAGE(OpenGL)
-
+cmake_policy(SET CMP0028 OLD)
 find_package(ASSIMP QUIET)
+find_package(Qt5Widgets)
+find_package(Qt5Test)
+find_package(Qt5Concurrent)
+
 if(NOT ASSIMP_FOUND)
   find_package(PkgConfig REQUIRED)
   pkg_check_modules(ASSIMP assimp)
@@ -30,9 +34,9 @@ endif()
 # create the 2d rendering library
 add_library(${PROJECT_NAME}_2d renderer2d.cpp)
 target_link_libraries(${PROJECT_NAME}_2d ${OpenCV_LIBRARIES})
-install(TARGETS ${PROJECT_NAME}_2d
-          DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-)
+#install(TARGETS ${PROJECT_NAME}_2d
+#          DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#)
 
 # create the 3d rendering library
 set(SOURCES model.cpp renderer3d.cpp utils.cpp)
@@ -66,16 +70,16 @@ target_link_libraries(${PROJECT_NAME}_3d ${EXTRA_LIBRARIES}
                                          freeimage
 )
 
-install(TARGETS ${PROJECT_NAME}_3d
-        DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-)
+#install(TARGETS ${PROJECT_NAME}_3d
+#        DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#)
 
 # add an executable to render views to a file
 ADD_EXECUTABLE(view_generator main.cpp)
 
 SET_PROPERTY(TARGET view_generator PROPERTY DEBUG_POSTFIX ${ASSIMP_DEBUG_POSTFIX})
 
-TARGET_LINK_LIBRARIES(view_generator ${EXTRA_LIBRARIES})
+TARGET_LINK_LIBRARIES(view_generator ${EXTRA_LIBRARIES} Qt5::Widgets Qt5::Test Qt5::Concurrent)
 
 target_link_libraries(view_generator ${PROJECT_NAME}_3d)
 target_link_libraries(view_generator ${PROJECT_NAME}_2d)
@@ -84,9 +88,9 @@ SET_TARGET_PROPERTIES(view_generator PROPERTIES
                                      OUTPUT_NAME view_generator
 )
 
-install(TARGETS view_generator
-        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+#install(TARGETS view_generator
+#        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+#)
 
 # add some executables
-add_subdirectory(apps)
+#add_subdirectory(apps)

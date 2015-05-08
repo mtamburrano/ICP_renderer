@@ -34,7 +34,7 @@
  */
 
 #include <iostream>
-
+#include <limits>
 #include <object_recognition_renderer/renderer2d.h>
 
 #include <opencv2/calib3d/calib3d.hpp>

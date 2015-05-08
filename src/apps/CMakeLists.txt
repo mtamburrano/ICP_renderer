@@ -9,6 +9,6 @@ SET_TARGET_PROPERTIES(trainer_planar PROPERTIES
                                      OUTPUT_NAME trainer_planar
 )
 
-install(TARGETS trainer_planar
-        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+#install(TARGETS trainer_planar
+#DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+#)
