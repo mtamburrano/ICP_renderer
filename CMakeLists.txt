@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.0)
 project(object_recognition_renderer)
-cmake_policy(SET CMP0028 OLD)
+#cmake_policy(SET CMP0028 OLD)
 find_package(Boost REQUIRED)
 find_package(OpenCV REQUIRED)
 
