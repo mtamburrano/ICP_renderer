@@ -75,6 +75,7 @@ target_link_libraries(${PROJECT_NAME}_3d ${EXTRA_LIBRARIES}
 
 # add an executable to render views to a file
 ADD_EXECUTABLE(view_generator main.cpp)
+ADD_EXECUTABLE(view_icp main_icp.cpp)
 
 SET_PROPERTY(TARGET view_generator PROPERTY DEBUG_POSTFIX ${ASSIMP_DEBUG_POSTFIX})
 
@@ -85,6 +86,17 @@ target_link_libraries(view_generator ${PROJECT_NAME}_2d)
 
 SET_TARGET_PROPERTIES(view_generator PROPERTIES
                                      OUTPUT_NAME view_generator
+)
+
+SET_PROPERTY(TARGET view_icp PROPERTY DEBUG_POSTFIX ${ASSIMP_DEBUG_POSTFIX})
+
+TARGET_LINK_LIBRARIES(view_icp ${EXTRA_LIBRARIES} Qt5::Widgets Qt5::Test Qt5::Concurrent)
+
+target_link_libraries(view_icp ${PROJECT_NAME}_3d)
+target_link_libraries(view_icp ${PROJECT_NAME}_2d)
+
+SET_TARGET_PROPERTIES(view_icp PROPERTIES
+                                     OUTPUT_NAME view_icp
 )
 
 #install(TARGETS view_generator
